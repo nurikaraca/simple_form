@@ -1,5 +1,5 @@
 .form-container {
-  margin-top: 150px;
+  margin-top: 100px;
   padding: 12px;
   background-color: #fff;
   border-radius: 12px;
@@ -24,12 +24,40 @@
 .form_input {
   max-width: 40rem;
   width: 100%;
-  /* margin-left: auto; 
-  margin-right: auto;  */
   border: 1px solid #e5e7eb;
   padding: 0.5rem;
   outline: none;
 }
+
+/* Gender */
+
+.form_gender {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  font-size: 18px;
+  font-weight: 500;
+} 
+.form_gender input[type="radio"]{
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #007bff;
+  background-color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  margin-right: 8px;
+  
+  
+}
+.form_gender input[type="radio"]:checked {
+  background-color: #007bff; 
+  border-color: #007bff; 
+}
+
+
 
 .form_input:focus {
   border: 2px solid #14616a;
