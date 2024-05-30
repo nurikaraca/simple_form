@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box; 
+    margin: 0; 
+   
+  }
+html{
+    font-size: 125%;
+}
+
+body {
+    
+    margin: auto;
+    width: 33%;
+    background-color: black;
+}
