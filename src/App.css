@@ -9,11 +9,37 @@ html{
 
 body {
     
-    margin: auto;
-    width: 33%;
+   
+    width: 100%;
     background-color: black;
 }
 
-/
+
+.border-content {
     
+    width: 3px;
+    height: 100%; 
+    background-color: red;
+    position: fixed; 
+    top: 0;
+    left: 50%; 
+    transform: translateX(-50%); 
+  }
+  
+  .content-container{
+    display: flex;
+    
+  }
+
+  .left-content {
+ margin-right: auto;
+ padding-left: 10%;
+ width: 40%;
+
+  }
  
+  .right-content {
+    margin-left: auto;
+    padding-right: 10%;
+    width: 40%;
+     }

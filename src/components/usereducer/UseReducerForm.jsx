@@ -1,36 +1,26 @@
-import { useState } from "react";
 import "../Form.css";
+import React, { useReducer, useState } from "react";
+import { initialFormState } from "./reducer";
 
-const Form = ({ setFormData }) => {
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [gender, setGender] = useState("");
+const UseReducerForm = ({ state, dispatch }) => {
+  const [formData, setFormData] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormData((prevState) => ({
-      ...prevState,
-      data: {
-        name,
-        surname,
-        username,
-        email,
-        gender,
-      },
-    }));
-    setName("");
-    setSurname("");
-    setUsername("");
-    setEmail("");
-    setGender("");
+    dispatch({ type: "SET_FORM_DATA", payload: formData });
+    setFormData(initialFormState);
   };
 
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <div className="form-container">
       <form className="form" onSubmit={handleSubmit}>
-        <h1>using  useState </h1>
+        <h1>using useReducer</h1>
         <label className="form_label" htmlFor="name">
           Name
         </label>
@@ -38,9 +28,10 @@ const Form = ({ setFormData }) => {
           className="form_input"
           type="text"
           id="name"
+          name="name"
           placeholder="Your Name"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
+          value={formData.name || ""}
+          onChange={handleInputChange}
         />
 
         <label className="form_label" htmlFor="surname">
@@ -50,9 +41,10 @@ const Form = ({ setFormData }) => {
           className="form_input"
           type="text"
           id="surname"
+          name="surname"
           placeholder="Your Surname"
-          onChange={(e) => setSurname(e.target.value)}
-          value={surname}
+          value={formData.surname || ""}
+          onChange={handleInputChange}
         />
 
         <label className="form_label" htmlFor="username">
@@ -63,8 +55,9 @@ const Form = ({ setFormData }) => {
           type="text"
           id="username"
           placeholder="Your username"
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
+          name="username"
+          value={formData.username || ""}
+          onChange={handleInputChange}
         />
 
         <label className="form_label" htmlFor="email">
@@ -75,8 +68,9 @@ const Form = ({ setFormData }) => {
           type="email"
           id="email"
           placeholder="Your email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+          name="email"
+          value={formData.email || ""}
+          onChange={handleInputChange}
         />
         <label className="form_label" htmlFor="gender">
           {" "}
@@ -88,8 +82,8 @@ const Form = ({ setFormData }) => {
               type="radio"
               name="gender"
               value="male"
-              onChange={(e) => setGender(e.target.value)}
-              checked={gender === "male"}
+              onChange={handleInputChange}
+              checked={formData.gender === "male"}
             />{" "}
             Male
           </label>
@@ -98,8 +92,8 @@ const Form = ({ setFormData }) => {
               type="radio"
               name="gender"
               value="female"
-              onChange={(e) => setGender(e.target.value)}
-              checked={gender === "female"}
+              onChange={handleInputChange}
+              checked={formData.gender === "female"}
             />{" "}
             Female
           </label>
@@ -113,4 +107,4 @@ const Form = ({ setFormData }) => {
   );
 };
 
-export default Form;
+export default UseReducerForm;
